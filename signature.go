@@ -17,7 +17,7 @@ func Sign(priv *rsa.PrivateKey, data []byte) ([]byte, error) {
 	return rsa.SignPKCS1v15(rand.Reader, priv, crypto.SHA256, d)
 }
 
-func Unsign(pub *rsa.PublicKey, data, sign []byte) error {
+func Verify(pub *rsa.PublicKey, data, sign []byte) error {
 	h := sha256.New()
 	h.Write(data)
 	d := h.Sum(nil)
